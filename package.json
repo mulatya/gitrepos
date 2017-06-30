@@ -1,0 +1,19 @@
+{
+  "name": "github",
+  "version": "1.0.0",
+  "description": "get a github user's details when the username is entered",
+  "main": "github.js",
+  "scripts": {
+    "test": ""
+  },
+  "repository": {
+    "type": "username",
+    "url": "github"
+  },
+  "author": "mulatya",
+  "license": "ISC",
+  "devDependencies": {
+    "browserify": "^14.4.0",
+    "gulp": "^3.9.1"
+  }
+}

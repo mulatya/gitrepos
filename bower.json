@@ -1,0 +1,17 @@
+{
+  "name": "github",
+  "description": "get a github user's details when the username is entered",
+  "main": "github.js",
+  "authors": [
+    "mulatya"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
