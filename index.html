@@ -1,21 +1,56 @@
-<!DOCTYPE html>
+<!DOCTYPE>
 <html>
+
 <head>
+  <title>Github form</title>
+  <meta charset="utf-8">
   <link rel="stylesheet" href="build/css/vendor.css">
-      <link rel="stylesheet" href="build/css/styles.css">
-      <script src="build/js/vendor.min.js"></script>
-      <script type="text/javascript" src="build/js/app.js"></script>
-    <title>github</title>
-  </head>
-  <body>
-    <div class="container">
-      <h1>Get Github Conditions From Anywhere!</h1>
-      <div class="box">
-        <label for="location">Enter a GitHub username:</label>
-        <input id="location" type="text">
-        <button class="button" id="username">Submit</button>
-        <div class="git"></div>
+  <link rel="stylesheet" href="build/css/styles.css">
+  <script src="build/js/vendor.min.js"></script>
+  <script type="text/javascript" src="build/js/app.js"></script>
+</head>
+
+<body>
+  <h1 style="text-align:center">Github</h1>
+  <div class="container">
+  <center>
+    <h3>Well look at the time! </h3>
+    <h3 id="time"></h3>
+</center>
+    <div class="jumbotron">
+      <h3>Kindly search your GitHub Username</h3>
+
+      <!-- form that the user will interact with -->
+      <form>
+        <label for="userName">Enter your username here: </label>
+        <input type="text" id="userName">
+        <button type="button" id="searchName" class="btn btn-lg"> Search the repository</button>
+      </form>
+      <!-- ######## -->
+      <!-- username details and picture display -->
+      <div class="row">
+      <div class="col-sm-3">
+
+      <div class="showUser">
+        <ul id="userPic" class="list-unstyled">
+        </ul>
       </div>
     </div>
-  </body>
+      <!-- ########## -->
+      <!-- where the repos will be displayed -->
+      <div class="col-sm-9">
+      <div id="showRepos">
+        <ul id="repoUrl" class="list-unstyled">
+
+        </ul>
+      </div>
+    </div>
+      </div>
+
+      <!-- ########## -->
+    </div>
+  </div>
+
+</body>
+
 </html>

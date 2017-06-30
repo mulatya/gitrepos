@@ -1,14 +1,30 @@
-var github = require('./../js/github.js').githubModule;
+var Repos = require('./../js/github.js').reposModule;
 
-var name = function(name, ) {
-  $('.git').text("The humidity in " + city + " is " + humidityData + "%");
-}
+
+var displayUser = function(user) {
+  // users.forEach(function(user) {
+  $('ul#userPic').empty();
+  $('ul#userPic').append("<li>" + user.name + "</li > ");
+  // });
+};
+
+
+var displayData = function(repos) {
+  $('ul#repoUrl').empty();
+  repos.forEach(function(repo) {
+    $('ul#repoUrl').append("<li><a href='" + repo.html_url + "'>" + repo.name + "</a>: " + repo.description + "; created on " + repo.created_at + "</li > ");
+  });
+};
+
 
 $(document).ready(function() {
-  var usernameObject = new github();
-  $('#username').click(function() {
-    var city = $('#location').val();
-    $('#location').val("");
-usernameObject.getusername(city, displayUsername);
+  var searchUsers = new Repos();
+  $('#searchName').click(function() {
+    //get input value
+    var name = $('#userName').val();
+    // $('#userPic').val("");
+    console.log(name);
+    searchUsers.getUser(name, displayUser);
+    searchUsers.getRepos(name, displayData);
   });
 });

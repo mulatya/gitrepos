@@ -1,3 +1,4 @@
 node_modules/
 .env/
 tmp/
+bower_components/

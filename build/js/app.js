@@ -14,22 +14,63 @@ github.prototype.getusername = function(name, displayFunct) {
     console.log(error.responseJSON.message);
   });
 }
+var apiKey = require('./../.env').apiKey;
 
-exports.githubModule = github;
+
+
+Repos = function() {
+
+};
+
+Repos.prototype.getUser = function(name, displayFunction) {
+  $.get('https://api.github.com/users/' + name + '?access_token=' + apiKey).then(function(users) {
+    displayFunction(users);
+  }).fail(function(error) {
+    $('.showUser').text("<h2> " + name + "</h2>" + " is " + error.responseJSON.message + "." +
+      "ENTER A VALID USERNAME");
+  });
+};
+
+Repos.prototype.getRepos = function(name, displayFunction) {
+  $.get('https://api.github.com/users/' + name + '/repos?access_token=' + apiKey).then(function(repos) {
+    displayFunction(repos);
+  }).fail(function(error) {
+    $('.showUser').text("NO REPOSITORY FOUND FOR" + name + " is " + error.responseJSON.message + "." +
+      "ENTER A VALID USERNAME");
+  });
+};
+
+exports.reposModule = Repos;
 
 },{"./../.env":1}],3:[function(require,module,exports){
-var github = require('./../js/github.js').githubModule;
+var Repos = require('./../js/github.js').reposModule;
 
-var name = function(name, ) {
-  $('.git').text("The humidity in " + city + " is " + humidityData + "%");
-}
+
+var displayUser = function(user) {
+  // users.forEach(function(user) {
+  $('ul#userPic').empty();
+  $('ul#userPic').append("<li>" + user.name + "</li > ");
+  // });
+};
+
+
+var displayData = function(repos) {
+  $('ul#repoUrl').empty();
+  repos.forEach(function(repo) {
+    $('ul#repoUrl').append("<li><a href='" + repo.html_url + "'>" + repo.name + "</a>: " + repo.description + "; created on " + repo.created_at + "</li > ");
+  });
+};
+
 
 $(document).ready(function() {
-  var usernameObject = new github();
-  $('#username').click(function() {
-    var city = $('#location').val();
-    $('#location').val("");
-usernameObject.getusername(city, displayUsername);
+  var searchUsers = new Repos();
+  $('#searchName').click(function() {
+    //get input value
+    var name = $('#userName').val();
+    // $('#userPic').val("");
+    console.log(name);
+    searchUsers.getUser(name, displayUser);
+    searchUsers.getRepos(name, displayData);
   });
 });
 
