@@ -1,6 +1,6 @@
 var github = require('./../js/github.js').githubModule;
 
-var displayUsername = function(city, humidityData) {
+var name = function(name, ) {
   $('.git').text("The humidity in " + city + " is " + humidityData + "%");
 }
 
